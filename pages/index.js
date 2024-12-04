@@ -413,7 +413,7 @@ And hey, if you need a more formal explanation, check out the rest of this site.
             </form>
           </div>
           <div className="absolute bottom-8 right-8 text-sm text-gray-400 italic">
-            Don't worry, I'm still pop(:
+            Don&apos;t worry, I&apos;m still pop(:
           </div>
         </section>
 
