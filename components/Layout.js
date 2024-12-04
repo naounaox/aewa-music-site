@@ -9,9 +9,9 @@ export default function Layout({ children }) {
    <nav className="container mx-auto px-4 py-8 flex items-center justify-center">
   <ul className="flex items-center">
     <li><Link href="#releases" className="text- font-gorditas hover:text-gray-300">RELEASES</Link></li>
-    <li className="mx-16"><a href="#about" className="text-xl font-gorditas hover:text-gray-300">ABOUT</a></li>
-    <li className="mx-16"><a href="/" className="text-6xl font-gorditas">æwa</a></li>
-    <li className="mx-16"><a href="#blog" className="text-xl font-gorditas hover:text-gray-300">BLOG</a></li>
+    <li className="mx-16"><Link href="#about" className="text-xl font-gorditas hover:text-gray-300">ABOUT</Link></li>
+    <li className="mx-16"><Link href="/" className="text-6xl font-gorditas">æwa</Link></li>
+    <li className="mx-16"><Link href="#blog" className="text-xl font-gorditas hover:text-gray-300">BLOG</Link></li>
     <li><Link href="#contact" className="text-xl font-gorditas hover:text-gray-300">CONTACT</Link></li>
   </ul>
 </nav>

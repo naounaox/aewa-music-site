@@ -20,7 +20,7 @@ export default function About() {
                  aewa (æwa) is a Japanese pop artist, singer-songwriter, and musician. (Born January 15, 2000) 
                </p>
                <p>
-                 Although he can't play an instrument, for the most part, he makes music by adding raps and vocals to the beats he makes himself. The recording is done at his home, and he also mixes and masters his own music.
+                 Although he can&apos;t play an instrument, for the most part, he makes music by adding raps and vocals to the beats he makes himself. The recording is done at his home, and he also mixes and masters his own music.
                </p>
                <p>
                  The music genre he produces ranges from narrative music to dance music. The main sites for uploading songs are SoundCloud and youtube.

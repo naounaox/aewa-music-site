@@ -388,7 +388,7 @@ And hey, if you need a more formal explanation, check out the rest of this site.
           <div className="container mx-auto max-w-xl">
             <h2 className="text-4xl font-bold mb-4 text-center">CONTACT</h2>
             <p className="text-xl text-gray-400 text-center mb-12 font-kalam">
-              If something caught your interest, don't hesitate to reach out!
+              If something caught your interest, don&apos;t hesitate to reach out!
             </p>
             <form className="space-y-6" action="mailto:aewaoiui@gmail.com" method="post">
               <div>
