@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
+import Image from 'next/image';
+import Link from 'next/link';
+
 
 export default function Releases() {
   const [releases, setReleases] = useState([]);
@@ -40,7 +43,7 @@ export default function Releases() {
                 {releases.map((release) => (
                   <div key={release.id} className="border border-gray-800 rounded-lg p-4">
                     {release.images?.[0]?.url && (
-                      <img 
+                      <Image 
                         src={release.images[0].url} 
                         alt={release.name} 
                         className="w-full rounded-lg"
@@ -49,14 +52,14 @@ export default function Releases() {
                     <h2 className="text-xl font-bold mt-4">{release.name}</h2>
                     <p className="text-gray-400">{new Date(release.release_date).toLocaleDateString()}</p>
                     {release.external_urls?.spotify && (
-                      <a 
+                      <Link 
                         href={release.external_urls.spotify} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="mt-4 inline-block bg-green-500 text-black px-4 py-2 rounded-full hover:bg-green-400"
                       >
                         Listen on Spotify
-                      </a>
+                      </Link>
                     )}
                   </div>
                 ))}

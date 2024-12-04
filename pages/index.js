@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 
 const fonts = [
   'Jura',
@@ -212,11 +215,18 @@ export default function Home() {
     }}
   >
     <div className="record-spin">
-      <img 
+      {/* <Image 
         src="/aewamain.png" 
         alt="aewa main"
         className="w-full h-full object-contain"
-      />
+      /> */}
+      <Image 
+  src="/aewamain.png" 
+  width={800} 
+  height={600} 
+  alt="Main Image" 
+  priority
+/>
     </div>
   </div>
   <h1 className="text-9xl font-gorditas relative" style={{ zIndex: 20, transform: 'translateY(-470px)' }}>æwa</h1>
@@ -235,10 +245,12 @@ export default function Home() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                       <div className="transform hover:scale-105 transition-transform duration-300">
                         {latestRelease.images?.[0]?.url && (
-                          <img 
+                          <Image 
                             src={latestRelease.images[0].url}
                             alt={latestRelease.name}
                             className="rounded-lg shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-300"
+                            width={800} 
+                            height={800}
                           />
                         )}
                       </div>
@@ -263,22 +275,22 @@ export default function Home() {
                           ></iframe>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4">
-                          <a 
+                          <Link 
                             href={latestRelease.external_urls.spotify}
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
                           >
                             <span className="text-xl">Listen on Spotify</span>
-                          </a>
-                          <a 
+                          </Link>
+                          <Link 
                             href="https://music.apple.com/jp/artist/aewa-oiui/1535817204"
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="bg-[#fb233b] text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
                           >
                             <span className="text-xl">Listen on Apple Music</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -287,12 +299,12 @@ export default function Home() {
               )}
             </div>
             <div className="text-center mt-12">
-  <a 
+  <Link 
     href="/releases" 
     className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300 "
   >
     See More Releases →
-  </a>
+  </Link>
 </div>
           </div>
           
@@ -304,20 +316,21 @@ export default function Home() {
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-4xl font-bold mb-12 text-center">ABOUT</h2>
             <div className="bg-gray-900/50 p-12 rounded-lg font-mono">
-              <TypeWriter 
-                text="Hi, I'm æwa, as you know it. For you impatient folks who can't read more than three lines - here's the quick version: I'm still pop, still fuzzy. I'm super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin', sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That's the vibe.
+            <TypeWriter 
+  text="Hi, I&apos;m æwa, as you know it. For you impatient folks who can&apos;t read more than three lines - here&apos;s the quick version: I&apos;m still pop, still fuzzy. I&apos;m super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin&apos;, sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That&apos;s the vibe.
 
-And hey, if you need a more formal explanation, check out the rest of this site. 'Cause yeah, I can be diligent too."
-                shouldStartTyping={isAboutVisible}
-              />
+And hey, if you need a more formal explanation, check out the rest of this site. &apos;Cause yeah, I can be diligent too."
+  shouldStartTyping={isAboutVisible}
+/>
+
             </div>
             <div className="text-center mt-12">
-  <a 
+  <Link 
     href="/about" 
     className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
   >
     Learn More About æwa →
-  </a>
+  </Link>
 </div>
           </div>
         </section>
@@ -360,12 +373,12 @@ And hey, if you need a more formal explanation, check out the rest of this site.
               ))}
             </div>
             <div className="text-center mt-12">
-  <a 
+  <Link 
     href="/blog" 
     className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
   >
     Read More Posts →
-  </a>
+  </Link>
 </div>
           </div>
         </section>
