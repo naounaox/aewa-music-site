@@ -152,6 +152,48 @@ export default function Home() {
     };
   }, []);
 
+  function TypeWriter({ text, shouldStartTyping }) {
+    const [displayText, setDisplayText] = useState('');
+    const [index, setIndex] = useState(0);
+  
+  useEffect(() => {
+    if (shouldStartTyping) {
+      setDisplayText('');
+      setIndex(0);
+    }
+  }, [shouldStartTyping]);
+
+  useEffect(() => {
+    if (!shouldStartTyping) return;
+    
+    if (index < text.length) {
+      let speed = 50;
+      const superStartIndex = text.indexOf("I'm super");
+      const vibeIndex = text.indexOf("That's the vibe");
+      
+      if (index >= superStartIndex && index < vibeIndex) {
+        const progress = (index - superStartIndex) / (vibeIndex - superStartIndex);
+        speed = Math.max(10, 50 - (progress * 40));
+      }
+
+      const timer = setTimeout(() => {
+        setDisplayText(prev => prev + text[index]);
+        setIndex(prev => prev + 1);
+      }, speed);
+
+      return () => clearTimeout(timer);
+    }
+  }, [index, text, shouldStartTyping]);
+  return (
+    <div 
+      style={{ whiteSpace: 'pre-line' }}
+      className="text-xl md:text-3xl" // モバイルとデスクトップでのフォントサイズを調整
+    >
+      {displayText}
+    </div>
+  );
+}
+
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -307,27 +349,27 @@ export default function Home() {
 
         {/* ABOUT セクション */}
         <section id="about-section" className="min-h-screen bg-black flex items-center justify-center p-8">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-4xl font-bold mb-12 text-center">ABOUT</h2>
-            <div className="bg-gray-900/50 p-12 rounded-lg font-mono">
-            <TypeWriter 
+  <div className="container mx-auto max-w-6xl">
+    <h2 className="text-4xl font-bold mb-12 text-center">ABOUT</h2>
+    <div className="bg-gray-900/50 p-12 rounded-lg font-mono">
+      <TypeWriter 
   text="Hi, I&apos;m æwa, as you know it. For you impatient folks who can&apos;t read more than three lines - here&apos;s the quick version: I&apos;m still pop, still fuzzy. I&apos;m super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin&apos;, sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That&apos;s the vibe.
 
 And hey, if you need a more formal explanation, check out the rest of this site. &apos;Cause yeah, I can be diligent too."
   shouldStartTyping={isAboutVisible}
 />
 
-            </div>
-            <div className="text-center mt-12">
-  <Link 
-    href="/about" 
-    className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
-  >
-    Learn More About æwa →
-  </Link>
 </div>
-          </div>
-        </section>
+    <div className="text-center mt-12">
+      <Link 
+        href="/about"
+        className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+      >
+        Learn More About æwa →
+      </Link>
+    </div>
+  </div>
+</section>
 
         {/* BLOG セクション */}
         <section id="blog" className="min-h-screen bg-black flex items-center justify-center p-8">
