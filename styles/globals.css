@@ -1,49 +1,52 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
- --foreground-rgb: 255, 255, 255;
- --background-start-rgb: 0, 0, 0;
- --background-end-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
- color: rgb(var(--foreground-rgb));
- background: linear-gradient(
-   to bottom,
-   transparent,
-   rgb(var(--background-end-rgb))
- )
- rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
 }
 
 html {
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-@keyframes recordSpin {
+@keyframes spin {
   0% {
     transform: rotate(0deg);
+  }
+  1% {
+    transform: rotate(360deg);
   }
   100% {
     transform: rotate(360deg);
   }
 }
 
-.record-container {
-  position: relative;
-  width: 300px;  /* サイズは適宜調整 */
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.favicon-spin {
+  animation: spin 60s step-end infinite;
+}
+
+@keyframes recordSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .record-spin {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: recordSpin 2s ease-out forwards;
+  animation: recordSpin 2s ease-out;
 }

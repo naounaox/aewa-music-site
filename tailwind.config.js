@@ -6,9 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bricolage: ['"Bricolage Grotesque"', 'sans-serif'],
         gorditas: ['Gorditas', 'cursive'],
-        kalam: ['Kalam', 'cursive'],
+        bricolage: ['"Bricolage Grotesque"', 'sans-serif'],
       },
     },
   },

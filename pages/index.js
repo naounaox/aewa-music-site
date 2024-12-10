@@ -173,66 +173,60 @@ export default function Home() {
         <meta name="description" content="still pop, still fuzzy - Welcome to æwa's official website." />
       </Head>
       <Layout>
-        {/* HOME セクション */}
-        <section className="min-h-screen relative overflow-hidden bg-black">
-          <div className="absolute inset-0 flex flex-col justify-start opacity-20"
-               style={{
-                 transform: 'translateY(-20%)',
-                 height: '140vh'
-               }}>
-            {Array(12).fill(null).map((_, rowIndex) => (
-              <div 
-                key={rowIndex} 
-                className="whitespace-nowrap text-7xl font-bold py-4"
-                style={{
-                  transform: 'translateX(-20%)',
-                  width: '140%'
-                }}
-              >
-                {Array(8).fill(null).map((_, phraseIndex) => {
-                  const phrase = getPhraseWithFont(rowIndex * 8 + phraseIndex);
-                  return (
-                    <span
-                      key={phraseIndex}
-                      style={{ fontFamily: phrase.font }}
-                    >
-                      {phrase.text + ', '}
-                    </span>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-
-{/* メインコンテンツ */}
-<div className="relative z-10 flex flex-col items-center justify-center h-screen">
-  <div 
-    className="record-container absolute"
-    style={{ 
-      width: '800px',
-      height: '800px',
-      zIndex: 10
-    }}
-  >
-    <div className="record-spin">
-      {/* <Image 
-        src="/aewamain.png" 
-        alt="aewa main"
-        className="w-full h-full object-contain"
-      /> */}
-      <Image 
-  src="/aewamain.png" 
-  width={800} 
-  height={600} 
-  alt="Main Image" 
-  priority
-/>
-    </div>
+{/* HOME セクション */}
+<section className="min-h-screen relative overflow-hidden bg-black">
+  <div className="absolute inset-0 flex flex-col justify-start opacity-20"
+       style={{
+         transform: 'translateY(-20%)',
+         height: '140vh'
+       }}>
+    {Array(12).fill(null).map((_, rowIndex) => (
+      <div 
+        key={rowIndex} 
+        className="whitespace-nowrap text-4xl md:text-7xl font-bold py-4"
+        style={{
+          transform: 'translateX(-20%)',
+          width: '140%'
+        }}
+      >
+        {Array(8).fill(null).map((_, phraseIndex) => {
+          const phrase = getPhraseWithFont(rowIndex * 8 + phraseIndex);
+          return (
+            <span
+              key={phraseIndex}
+              style={{ fontFamily: phrase.font }}
+            >
+              {phrase.text + ', '}
+            </span>
+          );
+        })}
+      </div>
+    ))}
   </div>
-  <h1 className="text-9xl font-gorditas relative" style={{ zIndex: 20, transform: 'translateY(-470px)' }}>æwa</h1>
-</div>
 
-        </section>
+  {/* メインコンテンツ */}
+  <div className="relative z-10 flex flex-col items-center justify-center h-screen">
+    <div 
+      className="record-container absolute"
+      style={{ 
+        width: '90vw',
+        maxWidth: '800px',
+        height: 'auto',
+        aspectRatio: '1 / 1',
+        zIndex: 10
+      }}
+    >
+      <div className="record-spin">
+        <img 
+          src="/aewamain.png" 
+          alt="aewa main"
+          className="w-full h-full object-contain"
+        />
+      </div>
+    </div>
+    <h1 className="text-6xl md:text-9xl font-gorditas relative" style={{ zIndex: 20 }}>æwa</h1>
+  </div>
+</section>
 
         {/* RELEASES セクション */}
         <section id="releases" className="min-h-screen bg-gray-900 flex items-center justify-center p-8">
