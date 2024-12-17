@@ -37,8 +37,8 @@
 //   );
 // }
 
+// pages/_document.js
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -58,22 +58,6 @@ export default function Document() {
       <body className="antialiased">
         <Main />
         <NextScript />
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-YBQT1V7DYJ`}
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YBQT1V7DYJ');
-          `}
-        </Script>
       </body>
     </Html>
   );
