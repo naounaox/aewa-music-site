@@ -44,7 +44,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         <meta name="description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta name="keywords" content="æwa, aewa, music, Japanese artist, pop music, singer-songwriter, still pop, still fuzzy" />
         <meta property="og:title" content="awwa - Official Website" />

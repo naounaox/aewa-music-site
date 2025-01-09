@@ -212,7 +212,7 @@ export default function Home() {
     <>
       <Head>
         <title>aewa - Official Website</title>
-        <meta name="description" content="still pop, still fuzzy - Welcome to æwa's official website." />
+        <meta name="description" content="still pop, still fuzzy - Welcome to aewa's official website." />
       </Head>
       <Layout>
 {/* HOME セクション */}
@@ -246,7 +246,7 @@ export default function Home() {
     ))}
   </div>
 
-  {/* メインコンテンツ */}
+  
   <div className="relative z-10 flex flex-col items-center justify-center h-screen">
     <div 
       className="record-container absolute"
@@ -311,16 +311,17 @@ export default function Home() {
                           ></iframe>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4">
+                        <Link 
+  href={latestRelease?.external_urls?.spotify || "#"}
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
+>
+  <span className="text-xl">Listen on Spotify</span>
+</Link>
+
                           <Link 
-                            href={latestRelease.external_urls.spotify}
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
-                          >
-                            <span className="text-xl">Listen on Spotify</span>
-                          </Link>
-                          <Link 
-                            href="https://music.apple.com/jp/artist/aewa-oiui/1535817204"
+                            href="https://music.apple.com/jp/artist/aewa/1787535063"
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="bg-[#fb233b] text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
@@ -426,7 +427,7 @@ And hey, if you need a more formal explanation, check out the rest of this site.
             <p className="text-xl text-gray-400 text-center mb-12 font-kalam">
               If something caught your interest, don&apos;t hesitate to reach out!
             </p>
-            <form className="space-y-6" action="mailto:aewaoiui@gmail.com" method="post">
+            <form className="space-y-6" action="mailto:aewasongs@gmail.com" method="post">
               <div>
                 <label className="block mb-2">NAME</label>
                 <input type="text" required className="w-full p-2 bg-gray-800 rounded font-bricolage" />
@@ -460,7 +461,7 @@ And hey, if you need a more formal explanation, check out the rest of this site.
             onClose={() => setSelectedPost(null)} 
           />
         )}
-      </Layout>
+       </Layout>
     </>
   );
 }

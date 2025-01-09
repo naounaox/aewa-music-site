@@ -65,12 +65,40 @@
 //   );
 // }
 
+// import "@/styles/globals.css";
+// import Script from 'next/script';
+
+// export default function App({ Component, pageProps }) {
+//   return (
+//     <>
+//       <Script
+//         src={`https://www.googletagmanager.com/gtag/js?id=G-YBQT1V7DYJ`}
+//         strategy="afterInteractive"
+//       />
+//       <Script id="ga-script" strategy="afterInteractive">
+//         {`
+//           window.dataLayer = window.dataLayer || [];
+//           function gtag(){dataLayer.push(arguments);}
+//           gtag('js', new Date());
+//           gtag('config', 'G-YBQT1V7DYJ');
+//         `}
+//       </Script>
+//       <Component {...pageProps} />
+//     </>
+//   );
+// }
+
+
 import "@/styles/globals.css";
-import Script from 'next/script';
+import Script from "next/script";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=G-YBQT1V7DYJ`}
         strategy="afterInteractive"
