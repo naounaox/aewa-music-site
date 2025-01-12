@@ -383,7 +383,7 @@ export default function Home() {
         🚧 Coming Soon! Hold tight! 🚧
       </h3>
       <p className="text-gray-300 text-lg mb-6">
-        I'm working on this section. Meanwhile, check out my latest releases on Spotify! 🎧🔥
+        I&aps;m working on this section. Meanwhile, check out my latest releases on Spotify! 🎧🔥
       </p>
 
       {/* ✅ Spotifyのリリースページへのリンク */}
