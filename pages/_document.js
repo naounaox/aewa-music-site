@@ -47,7 +47,7 @@ export default function Document() {
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         <meta name="description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta name="keywords" content="æwa, aewa, music, Japanese artist, pop music, singer-songwriter, still pop, still fuzzy" />
-        <meta property="og:title" content="awwa - Official Website" />
+        <meta property="og:title" content="aewa - Official Website" />
         <meta property="og:description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aewasongs.com" />

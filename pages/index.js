@@ -118,19 +118,30 @@ export default function Home() {
     font: fonts[index % fonts.length]
   });
 
-  useEffect(() => {
-    async function fetchLatestRelease() {
-      try {
-        const response = await fetch('/api/spotify?type=latest');
-        const data = await response.json();
-        setLatestRelease(data);
-      } catch (error) {
-        console.error('Error fetching latest release:', error);
-      }
-    }
 
-    fetchLatestRelease();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchLatestRelease() {
+  //     try {
+  //       const response = await fetch("/api/spotify");
+  //       const data = await response.json();
+  //       console.log("Fetched latest release:", data); // ✅ ここでデータを確認
+  
+  //       if (Array.isArray(data.items) && data.items.length > 0) {
+  //         console.log("Setting latestRelease:", data.items[0]); // ✅ ここでデバッグ
+  //         setLatestRelease(data.items[0]);
+  //       } else {
+  //         console.warn("No releases found");
+  //         setLatestRelease(null);
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch latest release:", error);
+  //     }
+  //   }
+  
+  //   fetchLatestRelease();
+  // }, []);
+  
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -270,83 +281,96 @@ export default function Home() {
   </div>
 </section>
 
-        {/* RELEASES セクション */}
-        <section id="releases" className="min-h-screen bg-gray-900 flex items-center justify-center p-8">
-          <div className="container mx-auto">
-            <h2 className="text-4xl font-bold mb-16 text-center">RELEASES</h2>
-            <div className="flex items-center justify-center">
-              {latestRelease && (
-                <div className="lg:max-w-5xl">
-                  <div className="bg-black/50 p-12 rounded-2xl backdrop-blur-sm">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                      <div className="transform hover:scale-105 transition-transform duration-300">
-                        {latestRelease.images?.[0]?.url && (
-                          <Image 
-                            src={latestRelease.images[0].url}
-                            alt={latestRelease.name}
-                            className="rounded-lg shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-300"
-                            width={800} 
-                            height={800}
-                          />
-                        )}
-                      </div>
-                      <div className="space-y-6">
-                        <div>
-                          <h3 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-                            {latestRelease.name}
-                          </h3>
-                          <p className="text-gray-400">
-                            Released {new Date(latestRelease.release_date).toLocaleDateString()}
-                          </p>
-                        </div>
-                        <div className="mb-8">
-                          <iframe 
-                            src={`https://open.spotify.com/embed/album/${latestRelease.id}`}
-                            width="100%" 
-                            height="152" 
-                            frameBorder="0" 
-                            allowtransparency="true" 
-                            allow="encrypted-media"
-                            className="rounded-lg"
-                          ></iframe>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                        <Link 
-  href={latestRelease?.external_urls?.spotify || "#"}
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
->
-  <span className="text-xl">Listen on Spotify</span>
-</Link>
 
-                          <Link 
-                            href="https://music.apple.com/jp/artist/aewa/1787535063"
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="bg-[#fb233b] text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
-                          >
-                            <span className="text-xl">Listen on Apple Music</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+{/* RELEASES セクション */}
+{/* <section id="releases" className="min-h-screen bg-gray-900 flex items-center justify-center p-8">
+  <div className="container mx-auto">
+    <h2 className="text-4xl font-bold mb-16 text-center">RELEASES</h2>
+    <div className="flex items-center justify-center">
+      {latestRelease ? (
+        <div className="lg:max-w-5xl">
+          <div className="bg-black/50 p-12 rounded-2xl backdrop-blur-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="transform hover:scale-105 transition-transform duration-300">
+                {latestRelease.images?.[0]?.url ? (
+                  <Image 
+                    src={latestRelease.images[0].url}
+                    alt={latestRelease.name}
+                    className="rounded-lg shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-300"
+                    width={800} 
+                    height={800}
+                  />
+                ) : (
+                  <p>No image available</p>
+                )}
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+                    {latestRelease.name || "Unknown Title"}
+                  </h3>
+                  <p className="text-gray-400">
+                    Released {latestRelease.release_date ? new Date(latestRelease.release_date).toLocaleDateString() : "Unknown Date"}
+                  </p>
                 </div>
-              )}
-            </div>
-            <div className="text-center mt-12">
-  <Link 
-    href="/releases" 
-    className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300 "
-  >
-    See More Releases →
-  </Link>
-</div>
-          </div>
-          
-        </section>
+                
+<div className="mb-8">
+  {latestRelease?.id ? (
+    <>
+      {console.log("Rendering latestRelease:", latestRelease)} 
+      <iframe 
+  src={`https://open.spotify.com/embed/album/${latestRelease.id}`} 
+  width="100%" 
+  height="152"
+  style={{ border: "none" }} // ✅ ここで border を消す
+  allow="encrypted-media"
+  sandbox="allow-scripts allow-same-origin"
+  className="rounded-lg"
+></iframe>
 
+    </>
+  ) : (
+    <p>No release found</p>
+  )}
+</div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href={latestRelease.external_urls?.spotify || "#"}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
+                  >
+                    <span className="text-xl">Listen on Spotify</span>
+                  </Link>
+
+                  <Link 
+                    href="https://music.apple.com/jp/artist/aewa/1787535063"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-[#fb233b] text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
+                  >
+                    <span className="text-xl">Listen on Apple Music</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p className="text-center text-gray-400">Loading latest release...</p>
+      )}
+    </div>
+    <div className="text-center mt-12">
+      <Link 
+        href="/releases" 
+        className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+      >
+        See More Releases →
+      </Link>
+    </div>
+  </div>
+</section> */}
 
         {/* ABOUT セクション */}
         <section id="about-section" className="min-h-screen bg-black flex items-center justify-center p-8">

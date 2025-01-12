@@ -46,7 +46,6 @@
 //   }
 // }
 
-
 import axios from "axios";
 
 export default async function handler(req, res) {
@@ -59,7 +58,8 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: "Failed to get access token" });
     }
 
-    const artistId = "YOUR_NEW_ARTIST_ID"; // SpotifyのアーティストIDを設定
+    // ✅ 正しいアーティストIDに変更
+    const artistId = "1rbAnM7ix1r6WRSUaGPdE1"; 
 
     // Spotify API を呼び出して最新のリリースを取得
     const response = await axios.get(`https://api.spotify.com/v1/artists/${artistId}/albums`, {
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       },
       params: {
         include_groups: "album,single", // アルバムとシングルを取得
-        limit: 1, // 最新の1つだけ取得
+        limit: 5, // 最新5件を取得（変更可能）
         market: "JP", // 日本市場向け（必要に応じて変更）
       },
     });

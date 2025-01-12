@@ -25,10 +25,10 @@ export default function Releases() {
   return (
     <>
       <Head>
-        <title>Releases - æwa Official Website</title>
-        <meta name="description" content="Explore æwa's music releases. Listen to latest singles and albums on Spotify." />
-        <meta property="og:title" content="Releases - æwa Official Website" />
-        <meta property="og:description" content="Explore æwa's music releases. Listen to latest singles and albums on Spotify." />
+        <title>Releases - aewa Official Website</title>
+        <meta name="description" content="Explore aewa's music releases. Listen to latest singles and albums on Spotify." />
+        <meta property="og:title" content="Releases - aewa Official Website" />
+        <meta property="og:description" content="Explore aewa's music releases. Listen to latest singles and albums on Spotify." />
         <meta property="og:type" content="music.musician" />
         {releases[0]?.images?.[0]?.url && (
           <meta property="og:image" content={releases[0].images[0].url} />
