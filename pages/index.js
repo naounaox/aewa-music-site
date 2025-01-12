@@ -119,27 +119,27 @@ export default function Home() {
   });
 
 
-  // useEffect(() => {
-  //   async function fetchLatestRelease() {
-  //     try {
-  //       const response = await fetch("/api/spotify");
-  //       const data = await response.json();
-  //       console.log("Fetched latest release:", data); // ✅ ここでデータを確認
+  useEffect(() => {
+    async function fetchLatestRelease() {
+      try {
+        const response = await fetch("/api/spotify");
+        const data = await response.json();
+        console.log("Fetched latest release:", data); // ✅ ここでデータを確認
   
-  //       if (Array.isArray(data.items) && data.items.length > 0) {
-  //         console.log("Setting latestRelease:", data.items[0]); // ✅ ここでデバッグ
-  //         setLatestRelease(data.items[0]);
-  //       } else {
-  //         console.warn("No releases found");
-  //         setLatestRelease(null);
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to fetch latest release:", error);
-  //     }
-  //   }
+        if (Array.isArray(data.items) && data.items.length > 0) {
+          console.log("Setting latestRelease:", data.items[0]); // ✅ ここでデバッグ
+          setLatestRelease(data.items[0]);
+        } else {
+          console.warn("No releases found");
+          setLatestRelease(null);
+        }
+      } catch (error) {
+        console.error("Failed to fetch latest release:", error);
+      }
+    }
   
-  //   fetchLatestRelease();
-  // }, []);
+    fetchLatestRelease();
+  }, []);
   
   
 
@@ -372,13 +372,41 @@ export default function Home() {
   </div>
 </section> */}
 
+{/* RELEASES セクション 工事中 */}
+<section id="releases" className="min-h-screen bg-gray-900 flex items-center justify-center p-8">
+  <div className="container mx-auto text-center">
+    <h2 className="text-4xl font-bold mb-8">RELEASES</h2>
+    
+    {/* 🚧 工事中メッセージ */}
+    <div className="bg-black/50 p-12 rounded-2xl backdrop-blur-sm">
+      <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+        🚧 Coming Soon! Hold tight! 🚧
+      </h3>
+      <p className="text-gray-300 text-lg mb-6">
+        I'm working on this section. Meanwhile, check out my latest releases on Spotify! 🎧🔥
+      </p>
+
+      {/* ✅ Spotifyのリリースページへのリンク */}
+      <Link 
+        href="https://open.spotify.com/artist/1rbAnM7ix1r6WRSUaGPdE1" // ✅ あなたのSpotifyアーティストページ
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
+      >
+        <span className="text-xl">🎵 Check it out on Spotify!</span>
+      </Link>
+    </div>
+  </div>
+</section>
+
+
         {/* ABOUT セクション */}
         <section id="about-section" className="min-h-screen bg-black flex items-center justify-center p-8">
   <div className="container mx-auto max-w-6xl">
     <h2 className="text-4xl font-bold mb-12 text-center">ABOUT</h2>
     <div className="bg-gray-900/50 p-12 rounded-lg font-mono">
       <TypeWriter 
-  text="Hi, I&apos;m æwa, as you know it. For you impatient folks who can&apos;t read more than three lines - here&apos;s the quick version: I&apos;m still pop, still fuzzy. I&apos;m super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin&apos;, sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That&apos;s the vibe.
+  text="Hi, I&apos;m aewa, as you know it. For you impatient folks who can&apos;t read more than three lines - here&apos;s the quick version: I&apos;m still pop, still fuzzy. I&apos;m super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin&apos;, sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That&apos;s the vibe.
 
 And hey, if you need a more formal explanation, check out the rest of this site. &apos;Cause yeah, I can be diligent too."
   shouldStartTyping={isAboutVisible}
