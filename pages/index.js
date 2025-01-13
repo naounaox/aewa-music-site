@@ -71,7 +71,7 @@ function TypeWriter({ text, shouldStartTyping }) {
   return (
     <div 
       style={{ whiteSpace: 'pre-line' }}
-      className="text-3xl"
+      className="text-xl md:text-3xl"
     >
       {displayText}
     </div>
@@ -236,10 +236,10 @@ export default function Home() {
     {Array(12).fill(null).map((_, rowIndex) => (
       <div 
         key={rowIndex} 
-        className="whitespace-nowrap text-4xl md:text-7xl font-bold py-4"
+        className="whitespace-nowrap text-2xl md:text-7xl font-bold py-4"
         style={{
-          transform: 'translateX(-20%)',
-          width: '140%'
+          transform: 'translateX(-10%)',
+          width: '150%'
         }}
       >
         {Array(8).fill(null).map((_, phraseIndex) => {
@@ -259,16 +259,16 @@ export default function Home() {
 
   
   <div className="relative z-10 flex flex-col items-center justify-center h-screen">
-    <div 
-      className="record-container absolute"
-      style={{ 
-        width: '90vw',
-        maxWidth: '800px',
-        height: 'auto',
-        aspectRatio: '1 / 1',
-        zIndex: 10
-      }}
-    >
+  <div 
+  className="record-container absolute"
+  style={{ 
+    width: '90vw',
+    maxWidth: '800px',
+    height: 'auto',
+    aspectRatio: '1 / 1',
+    zIndex: 10
+  }}
+>
       <div className="record-spin">
         <img 
           src="/aewamain.png" 
@@ -277,7 +277,7 @@ export default function Home() {
         />
       </div>
     </div>
-    <h1 className="text-6xl md:text-9xl font-gorditas relative" style={{ zIndex: 20 }}>æwa</h1>
+    <h1 className="text-4xl md:text-9xl font-gorditas relative" style={{ zIndex: 20 }}>æwa</h1>
   </div>
 </section>
 
@@ -325,7 +325,7 @@ export default function Home() {
   style={{ border: "none" }} // ✅ ここで border を消す
   allow="encrypted-media"
   sandbox="allow-scripts allow-same-origin"
-  className="rounded-lg"
+  className="rounded-lg md:w-[600px]"
 ></iframe>
 
     </>
@@ -469,7 +469,7 @@ And hey, if you need a more formal explanation, check out the rest of this site.
 
         {/* CONTACT セクション */}
         <section id="contact" className="min-h-screen bg-black flex items-center justify-center p-8 relative">
-          <div className="container mx-auto max-w-xl">
+        <div className="container mx-auto max-w-xl px-4 md:px-0">
             <h2 className="text-4xl font-bold mb-4 text-center">CONTACT</h2>
             <p className="text-xl text-gray-400 text-center mb-12 font-kalam">
               If something caught your interest, don&apos;t hesitate to reach out!

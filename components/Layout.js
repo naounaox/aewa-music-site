@@ -6,12 +6,12 @@ import Link from 'next/link';
 export default function Layout({ children }) {
  return (
    <main className="min-h-screen bg-black text-white flex flex-col font-gorditas">
-   <nav className="container mx-auto px-4 py-8 flex items-center justify-center">
-  <ul className="flex items-center">
+   <nav className="w-full max-w-screen-xl mx-auto px-4 py-8 flex items-center justify-center overflow-hidden">
+  <ul className="flex items-center justify-between w-full max-w-5xl">
     <li><Link href="#releases" className="text- font-gorditas hover:text-gray-300">RELEASES</Link></li>
-    <li className="mx-16"><Link href="#about" className="text-xl font-gorditas hover:text-gray-300">ABOUT</Link></li>
-    <li className="mx-16"><Link href="/" className="text-6xl font-gorditas">æwa</Link></li>
-    <li className="mx-16"><Link href="#blog" className="text-xl font-gorditas hover:text-gray-300">BLOG</Link></li>
+    <li className="mx-4 md:mx-16"><Link href="#about" className="text-xl font-gorditas hover:text-gray-300">ABOUT</Link></li>
+    <li className="mx-4 md:mx-16"><Link href="/" className="text-3xl md:text-6xl font-gorditas">æwa</Link></li>
+    <li className="mx-4 md:mx-16"><Link href="#blog" className="text-xl font-gorditas hover:text-gray-300">BLOG</Link></li>
     <li><Link href="#contact" className="text-xl font-gorditas hover:text-gray-300">CONTACT</Link></li>
   </ul>
 </nav>
