@@ -51,6 +51,8 @@ export default function Document() {
         <meta property="og:description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aewasongs.com" />
+        <meta property="og:image" content="https://aewasongs.com/thumbnail.jpg" />
+
         <link rel="icon" href="/aewa.png" className="favicon-spin" />
         <link href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600&family=Jura&family=Roboto+Condensed&family=Ubuntu&family=Bokor&family=Bebas+Neue&family=Indie+Flower&family=Shadows+Into+Light&family=Righteous&family=Orbitron&family=Hachi+Maru+Pop&family=Amatic+SC&family=Silkscreen&family=Sacramento&family=Reenie+Beanie&family=Nixie+One&family=Special+Elite&family=Paytone+One&family=Monoton&family=Six+Caps&family=Nanum+Pen+Script&family=Share+Tech+Mono&family=Gochi+Hand&family=Coda&family=Allerta+Stencil&family=New+Rocker&family=Jomhuria&family=Elsie&display=swap" rel="stylesheet" />
