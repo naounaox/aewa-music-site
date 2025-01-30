@@ -34,19 +34,47 @@
 // export default nextConfig;
 
 
-/** @type {import('next').NextConfig} */
+// /** @type {import('next').NextConfig} */
+// const withPWA = require("next-pwa")({
+//   dest: "public",
+//   register: true,
+//   skipWaiting: true,
+// });
+
+// const nextConfig = withPWA({
+//   reactStrictMode: true,
+//   env: {
+//     NOTION_TOKEN: process.env.NOTION_TOKEN,
+//     NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
+//   },
+//   images: {
+//     domains: ["i.scdn.co"],
+//   },
+//   trailingSlash: true,
+// });
+
+// export default nextConfig;
+
+
+import nextPWA from "next-pwa";
+
 const nextConfig = {
   reactStrictMode: true,
   env: {
     NOTION_TOKEN: process.env.NOTION_TOKEN,
-    NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID, // 修正：process.NOTION_DATABASE_ID → process.env.NOTION_DATABASE_ID
+    NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
   },
   images: {
-    domains: ['i.scdn.co'],
+    domains: ["i.scdn.co"],
   },
   trailingSlash: true,
+  experimental: {
+    appDir: true,
+  },
 };
 
-export default nextConfig;
-
-
+export default nextPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+})(nextConfig);

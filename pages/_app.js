@@ -92,12 +92,30 @@
 import "@/styles/globals.css";
 import Script from "next/script";
 import Head from "next/head";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js").then(
+          (registration) => {
+            console.log("Service Worker registered:", registration);
+          },
+          (error) => {
+            console.log("Service Worker registration failed:", error);
+          }
+        );
+      });
+    }
+  }, []);
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
       </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=G-YBQT1V7DYJ`}
