@@ -68,9 +68,6 @@ const nextConfig = {
     domains: ["i.scdn.co"],
   },
   trailingSlash: true,
-  experimental: {
-    appDir: true,
-  },
 };
 
 export default nextPWA({
