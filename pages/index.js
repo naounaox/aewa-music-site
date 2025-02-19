@@ -3,7 +3,10 @@ import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import Releases from "@/components/Releases";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Blog from "@/components/Blog";
 
 const fonts = [
   'Jura',
@@ -35,50 +38,7 @@ const fonts = [
   'Elsie'
 ];
 
-function TypeWriter({ text, shouldStartTyping }) {
-  const [displayText, setDisplayText] = useState('');
-  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    if (shouldStartTyping) {
-      setDisplayText('');
-      setIndex(0);
-    }
-  }, [shouldStartTyping]);
-
-  useEffect(() => {
-    if (!shouldStartTyping) return;
-    
-    if (index < text.length) {
-      let speed = 50;
-      const superStartIndex = text.indexOf("I'm super");
-      const vibeIndex = text.indexOf("That's the vibe");
-      
-      if (index >= superStartIndex && index < vibeIndex) {
-        const progress = (index - superStartIndex) / (vibeIndex - superStartIndex);
-        speed = Math.max(10, 50 - (progress * 40));
-      }
-
-      const timer = setTimeout(() => {
-        setDisplayText(prev => prev + text[index]);
-        setIndex(prev => prev + 1);
-      }, speed);
-
-      return () => clearTimeout(timer);
-    }
-  }, [index, text, shouldStartTyping]);
-
-  return (
-    <div 
-      style={{ whiteSpace: 'pre-line' }}
-      className="text-xl md:text-3xl"
-    >
-      {displayText}
-    </div>
-  );
-}
-
-// BlogModalコンポーネント
 const BlogModal = ({ post, onClose }) => {
   if (!post) return null;
 
@@ -163,47 +123,7 @@ export default function Home() {
     };
   }, []);
 
-  function TypeWriter({ text, shouldStartTyping }) {
-    const [displayText, setDisplayText] = useState('');
-    const [index, setIndex] = useState(0);
-  
-  useEffect(() => {
-    if (shouldStartTyping) {
-      setDisplayText('');
-      setIndex(0);
-    }
-  }, [shouldStartTyping]);
 
-  useEffect(() => {
-    if (!shouldStartTyping) return;
-    
-    if (index < text.length) {
-      let speed = 50;
-      const superStartIndex = text.indexOf("I'm super");
-      const vibeIndex = text.indexOf("That's the vibe");
-      
-      if (index >= superStartIndex && index < vibeIndex) {
-        const progress = (index - superStartIndex) / (vibeIndex - superStartIndex);
-        speed = Math.max(10, 50 - (progress * 40));
-      }
-
-      const timer = setTimeout(() => {
-        setDisplayText(prev => prev + text[index]);
-        setIndex(prev => prev + 1);
-      }, speed);
-
-      return () => clearTimeout(timer);
-    }
-  }, [index, text, shouldStartTyping]);
-  return (
-    <div 
-      style={{ whiteSpace: 'pre-line' }}
-      className="text-xl md:text-3xl" // モバイルとデスクトップでのフォントサイズを調整
-    >
-      {displayText}
-    </div>
-  );
-}
 
   useEffect(() => {
     async function fetchPosts() {
@@ -372,12 +292,12 @@ export default function Home() {
   </div>
 </section> */}
 
-{/* RELEASES セクション 工事中 */}
+{/* 
 <section id="releases" className="min-h-screen bg-gray-900 flex items-center justify-center p-8">
   <div className="container mx-auto text-center">
     <h2 className="text-4xl font-bold mb-8">RELEASES</h2>
     
-    {/* 🚧 工事中メッセージ */}
+    
     <div className="bg-black/50 p-12 rounded-2xl backdrop-blur-sm">
       <h3 className="text-2xl font-bold text-yellow-400 mb-4">
         🚧 Coming Soon! Hold tight! 🚧
@@ -386,9 +306,9 @@ export default function Home() {
         I&apos;m working on this section. Meanwhile, check out my latest releases on Spotify! 🎧🔥
       </p>
 
-      {/* ✅ Spotifyのリリースページへのリンク */}
+     
       <Link 
-        href="https://open.spotify.com/artist/1rbAnM7ix1r6WRSUaGPdE1" // ✅ あなたのSpotifyアーティストページ
+        href="https://open.spotify.com/artist/1rbAnM7ix1r6WRSUaGPdE1" 
         target="_blank"
         rel="noopener noreferrer"
         className="bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold hover:bg-opacity-80 text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 font-kalam"
@@ -397,109 +317,15 @@ export default function Home() {
       </Link>
     </div>
   </div>
-</section>
+</section> */}
 
+<Releases/>
 
-        {/* ABOUT セクション */}
-        <section id="about-section" className="min-h-screen bg-black flex items-center justify-center p-8">
-  <div className="container mx-auto max-w-6xl">
-    <h2 className="text-4xl font-bold mb-12 text-center">ABOUT</h2>
-    <div className="bg-gray-900/50 p-12 rounded-lg font-mono">
-      <TypeWriter 
-  text="Hi, I&apos;m aewa, as you know it. For you impatient folks who can&apos;t read more than three lines - here&apos;s the quick version: I&apos;m still pop, still fuzzy. I&apos;m super, ultra, happy, sexy, cool, hot, greatest, holy, ultimate, f**kin&apos;, sick, tremendous, awesome, incredible, magnificent, extraordinary, phenomenal, fantastic, legendary, spectacular, epic, brilliant, insane, marvelous, outstanding, remarkable, stunning, excellent, divine, savage, rad, dope, lit, wicked, mind-blowing, out of this world, and absolutely bonkers. That&apos;s the vibe.
+<About/>
 
-And hey, if you need a more formal explanation, check out the rest of this site. &apos;Cause yeah, I can be diligent too."
-  shouldStartTyping={isAboutVisible}
-/>
+<Blog posts={posts} setSelectedPost={setSelectedPost} />
 
-</div>
-    <div className="text-center mt-12">
-      <Link 
-        href="/about"
-        className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
-      >
-        Learn More About æwa →
-      </Link>
-    </div>
-  </div>
-</section>
-
-        {/* BLOG セクション */}
-        <section id="blog" className="min-h-screen bg-black flex items-center justify-center p-8">
-  <div className="container mx-auto max-w-6xl">
-    <h2 className="text-4xl font-bold mb-12 text-center">BLOG</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {posts?.slice(0, 3).map((post) => (
-        <div 
-          key={post.id} 
-          className="bg-black p-8 rounded-xl transform transition-all hover:scale-105 hover:-rotate-2 border-2 border-white shadow-lg"
-        >
-          <div className="flex justify-between items-center mb-4">
-            <span className="font-bold text-sm">
-              {new Date(post.properties.Date.date?.start).toLocaleDateString()}
-            </span>
-          </div>
-          <h3 className="text-2xl font-bold mb-4">
-            {post.properties.Name.title[0]?.plain_text || 'Untitled'}
-          </h3>
-          <p className="text-gray-300 mb-6 line-clamp-3">
-            {post.properties.Content?.rich_text[0]?.plain_text || ''}
-          </p>
-          <div className="flex justify-end">
-            <button 
-              onClick={() => setSelectedPost(post)}
-              className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-colors transform hover:scale-105"
-            >
-              READ MORE!
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-    <div className="text-center mt-12">
-      <Link 
-        href="/blog" 
-        className="inline-flex items-center text-lg border-2 border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
-      >
-        Read More Posts →
-      </Link>
-    </div>
-  </div>
-</section>
-
-        {/* CONTACT セクション */}
-        <section id="contact" className="min-h-screen bg-black flex items-center justify-center p-8 relative">
-        <div className="container mx-auto max-w-xl px-4 md:px-0">
-            <h2 className="text-4xl font-bold mb-4 text-center">CONTACT</h2>
-            <p className="text-xl text-gray-400 text-center mb-12 font-kalam">
-              If something caught your interest, don&apos;t hesitate to reach out!
-            </p>
-            <form className="space-y-6" action="mailto:aewasongs@gmail.com" method="post">
-              <div>
-                <label className="block mb-2">NAME</label>
-                <input type="text" required className="w-full p-2 bg-gray-800 rounded font-bricolage" />
-              </div>
-              <div>
-                <label className="block mb-2">E-MAIL</label>
-                <input type="email" required className="w-full p-2 bg-gray-800 rounded font-bricolage" />
-              </div>
-              <div>
-                <label className="block mb-2">SUBJECT</label>
-                <input type="text" required className="w-full p-2 bg-gray-800 rounded font-bricolage" />
-              </div>
-              <div>
-                <label className="block mb-2">MESSAGE</label>
-                <textarea required className="w-full p-2 bg-gray-800 rounded h-32 font-bricolage"></textarea>
-              </div>
-              <button type="submit" className="w-full bg-white text-black py-2 rounded hover:bg-gray-200">
-                SEND
-              </button>
-            </form>
-          </div>
-          <div className="absolute bottom-8 right-8 text-sm text-gray-400 italic">
-            Don&apos;t worry, I&apos;m still pop(:
-          </div>
-        </section>
+<Contact/>
 
         {/* モーダル */}
         {selectedPost && (
