@@ -3,7 +3,7 @@ const Releases = () => {
     return (
       <section id="releases" className="min-h-screen bg-black flex items-center justify-center p-8">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 text-white">RELEASES</h2>
+          <h2 className="text-5xl font-bold mb-8 text-white">RELEASES</h2>
           
           {/* 🎵 Spotifyの埋め込みプレイヤー */}
           <div className="bg-black/50 p-6 rounded-2xl backdrop-blur-sm">

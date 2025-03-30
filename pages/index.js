@@ -147,7 +147,7 @@ export default function Home() {
       </Head>
       <Layout>
 {/* HOME セクション */}
-<section className="min-h-screen relative overflow-hidden bg-black">
+<section id="home" className="min-h-screen relative overflow-hidden bg-black">
   <div className="absolute inset-0 flex flex-col justify-start opacity-20"
        style={{
          transform: 'translateY(-20%)',
