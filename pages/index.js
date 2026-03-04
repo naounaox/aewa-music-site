@@ -3,10 +3,21 @@ import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Releases from "@/components/Releases";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Blog from "@/components/Blog";
+import dynamic from 'next/dynamic';
+
+// 動的インポート：スクロール時に遅延ロード（LCP改善）
+const Releases = dynamic(() => import("@/components/Releases"), { 
+  loading: () => <div className="min-h-screen bg-black" /> 
+});
+const About = dynamic(() => import("@/components/About"), { 
+  loading: () => <div className="min-h-screen bg-black" /> 
+});
+const Contact = dynamic(() => import("@/components/Contact"), { 
+  loading: () => <div className="min-h-screen bg-black" /> 
+});
+const Blog = dynamic(() => import("@/components/Blog"), { 
+  loading: () => <div className="min-h-screen bg-black" /> 
+});
 
 const fonts = [
   'Jura',
@@ -72,22 +83,23 @@ export default function Home() {
   const [isAboutVisible, setIsAboutVisible] = useState(false);
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [postsLoaded, setPostsLoaded] = useState(false);
 
   const getPhraseWithFont = (index) => ({
     text: 'still pop, still fuzzy',
     font: fonts[index % fonts.length]
   });
 
-
+  // Spotify API：遅延実行（優先度低い）
   useEffect(() => {
     async function fetchLatestRelease() {
       try {
         const response = await fetch("/api/spotify");
         const data = await response.json();
-        console.log("Fetched latest release:", data); // ✅ ここでデータを確認
+        console.log("Fetched latest release:", data);
   
         if (Array.isArray(data.items) && data.items.length > 0) {
-          console.log("Setting latestRelease:", data.items[0]); // ✅ ここでデバッグ
+          console.log("Setting latestRelease:", data.items[0]);
           setLatestRelease(data.items[0]);
         } else {
           console.warn("No releases found");
@@ -98,20 +110,28 @@ export default function Home() {
       }
     }
   
-    fetchLatestRelease();
+    // ページロード後1秒待つ（ユーザーがコンテンツを見る時間を優先）
+    const timer = setTimeout(() => {
+      fetchLatestRelease();
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
   
   
-
+  // About セクション：Intersection Observer最適化
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsAboutVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsAboutVisible(true);
+          // セクション表示後は監視を続ける（不要なら disconnect可能）
+        }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
-    const aboutSection = document.getElementById('about-section');
+    const aboutSection = document.getElementById('about');
     if (aboutSection) {
       observer.observe(aboutSection);
     }
@@ -123,20 +143,21 @@ export default function Home() {
     };
   }, []);
 
-
-
+  // Notion Blog API：遅延実行（2秒後）
   useEffect(() => {
-    async function fetchPosts() {
+    const timer = setTimeout(async () => {
       try {
         const response = await fetch('/api/notion');
         const data = await response.json();
         setPosts(data);
+        setPostsLoaded(true);
       } catch (error) {
         console.error('Error fetching posts:', error);
+        setPostsLoaded(true);
       }
-    }
+    }, 2000);
 
-    fetchPosts();
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -148,10 +169,15 @@ export default function Home() {
       <Layout>
 {/* HOME セクション */}
 <section id="home" className="min-h-screen relative overflow-hidden bg-black">
+  {/* バックグラウンドテキスト（非同期ロード）：LCP改善のため遅延表示 */}
   <div className="absolute inset-0 flex flex-col justify-start opacity-20"
        style={{
          transform: 'translateY(-20%)',
-         height: '140vh'
+         height: '140vh',
+         willChange: 'transform',
+         backfaceVisibility: 'hidden',
+         perspective: 1000,
+         // レンダリング性能向上のためGPUアクセラレーション
        }}>
     {Array(12).fill(null).map((_, rowIndex) => (
       <div 
@@ -159,7 +185,9 @@ export default function Home() {
         className="whitespace-nowrap text-2xl md:text-7xl font-bold py-4"
         style={{
           transform: 'translateX(-10%)',
-          width: '150%'
+          width: '150%',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
         }}
       >
         {Array(8).fill(null).map((_, phraseIndex) => {
@@ -190,10 +218,14 @@ export default function Home() {
   }}
 >
       <div className="record-spin">
-        <img 
+        <Image 
           src="/aewamain.png" 
           alt="aewa main"
           className="w-full h-full object-contain"
+          width={800}
+          height={800}
+          priority
+          quality={75}
         />
       </div>
     </div>

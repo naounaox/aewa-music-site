@@ -197,10 +197,10 @@ export default function Layout({ children }) {
 </>
 
 
-      {/* メインコンテンツ */}
+      {/* Main */}
       {children}
 
-      {/* フッター */}
+      {/* footer */}
       <footer className="container mx-auto px-4 py-8 border-t border-gray-800">
         <div className="flex flex-col items-center space-y-6">
           <div className="flex space-x-6">
@@ -229,7 +229,7 @@ export default function Layout({ children }) {
               <FaSoundcloud size={24} />
             </Link>
             <Link
-              href="https://music.apple.com/jp/artist/aewa-oiui/1535817204"
+              href="https://music.apple.com/jp/artist/aewa/1787535063"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300"
@@ -237,7 +237,7 @@ export default function Layout({ children }) {
               <SiApplemusic size={24} />
             </Link>
             <Link
-              href="https://open.spotify.com/intl-ja/artist/5JV1dLA0kOJbrBAvPNZFDX"
+              href="https://open.spotify.com/intl-ja/artist/1rbAnM7ix1r6WRSUaGPdE1?si=BQcZK05qRgqGswNv1ODEFQ"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300"

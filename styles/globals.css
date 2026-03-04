@@ -23,6 +23,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* LCP改善：hero セクションのレンダリング最適化 */
+#home {
+  content-visibility: auto;
+}
+
+/* セクション最適化：見えないセクションのレンダリングスキップ */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100vh;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -50,4 +61,13 @@ html {
 
 .record-spin {
   animation: recordSpin 2s ease-out;
+  /* GPU加速 */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* テキストレンダリング最適化 */
+.record-container {
+  /* Will changeはアニメーション開始時のみ使用するため、
+     スタイルに追加せず、JSで動的に管理することをお勧め */
 }

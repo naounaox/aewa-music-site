@@ -116,7 +116,16 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
+        
+        {/* 外部APIへの接続最適化：LCP改善 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link rel="preconnect" href="https://open.spotify.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://api.spotify.com" />
       </Head>
+      
+      {/* Google Analytics：LCPに影響を与えないようafterInteractive */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=G-YBQT1V7DYJ`}
         strategy="afterInteractive"
@@ -129,6 +138,7 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-YBQT1V7DYJ');
         `}
       </Script>
+      
       <Component {...pageProps} />
     </>
   );

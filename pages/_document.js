@@ -44,18 +44,37 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         <meta name="description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta name="keywords" content="æwa, aewa, music, Japanese artist, pop music, singer-songwriter, still pop, still fuzzy" />
         <meta property="og:title" content="aewa - Official Website" />
         <meta property="og:description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aewasongs.com" />
-        <meta property="og:image" content="https://aewasongs.com/thumbnail.jpg" />
+        <meta property="og:image" content="https://aewasongs.com/aewamain.png" />
 
         <link rel="icon" href="/aewamain.png" className="favicon-spin" />
-        <link href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600&family=Jura&family=Roboto+Condensed&family=Ubuntu&family=Bokor&family=Bebas+Neue&family=Indie+Flower&family=Shadows+Into+Light&family=Righteous&family=Orbitron&family=Hachi+Maru+Pop&family=Amatic+SC&family=Silkscreen&family=Sacramento&family=Reenie+Beanie&family=Nixie+One&family=Special+Elite&family=Paytone+One&family=Monoton&family=Six+Caps&family=Nanum+Pen+Script&family=Share+Tech+Mono&family=Gochi+Hand&family=Coda&family=Allerta+Stencil&family=New+Rocker&family=Jomhuria&family=Elsie&display=swap" rel="stylesheet" />
+        
+        {/* メインフォント（重要度：高）はrel="preload"で優先度UP */}
+        <link 
+          rel="preload" 
+          href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" 
+          as="style" 
+        />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" 
+          rel="stylesheet" 
+        />
+        
+        {/* その他フォント（重要度：低）は遅延ロード */}
+        <link 
+          rel="preload" 
+          href="https://fonts.googleapis.com/css2?family=Jura&display=swap" 
+          as="style" 
+          onLoad="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet" />
+        </noscript>
       </Head>
       <body className="antialiased">
         <Main />

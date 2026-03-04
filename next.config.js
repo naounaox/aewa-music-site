@@ -66,8 +66,26 @@ const nextConfig = {
   },
   images: {
     domains: ["i.scdn.co"],
+    // 画像フォーマット最適化（AVIF > WebP > PNG/JPG）
+    formats: ['image/avif', 'image/webp'],
+    // キャッシュ最大化：31日間
+    minimumCacheTTL: 60 * 60 * 24 * 31,
   },
   trailingSlash: true,
+  // キャッシング戦略：静的資産の最適化
+  headers: async () => {
+    return [
+      {
+        source: '/aewamain.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
   experimental: {
     appDir: true,
   },
