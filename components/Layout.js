@@ -68,7 +68,7 @@
 import { useState } from "react";
 import { FaInstagram, FaFacebookF, FaYoutube, FaSoundcloud } from "react-icons/fa";
 import { SiApplemusic, SiSpotify } from "react-icons/si";
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'; // 三本線アイコン
 import Link from "next/link";
 
@@ -183,7 +183,7 @@ export default function Layout({ children }) {
     {/* ドロワーメニュー（スライドするサイドメニュー） */}
     <Drawer anchor="right" open={open} onClose={handleDrawerClose}>
       <List sx={{ width: 250 }}>
-        {['HOME', 'RELEASES', 'ABOUT', 'BLOG', 'CONTACT'].map((text, index) => (
+        {['HOME', 'RELEASES', 'ABOUT', 'BLOG', 'CONTACT'].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={handleDrawerClose} href={`#${text.toLowerCase()}`}>
               <ListItemText primary={text} />
