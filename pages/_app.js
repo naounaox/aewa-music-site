@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
         <meta name="theme-color" content="#000000" />
         
         {/* 外部APIへの接続最適化：LCP改善 */}
