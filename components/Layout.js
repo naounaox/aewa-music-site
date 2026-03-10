@@ -260,15 +260,6 @@
 //   );
 // }
 
-import Link from "next/link";
-
 export default function Layout({ children }) {
-  return (
-    <>
-      {children}
-      <footer>
-        <Link href="/">home</Link>
-      </footer>
-    </>
-  );
+  return <>{children}</>;
 }
