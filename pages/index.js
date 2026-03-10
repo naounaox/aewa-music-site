@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-// 動的インポート：スクロール時に遅延ロード（LCP改善）
+// dynamic import：delay loading (LCP optimization)
 const HomeHero = dynamic(() => import("@/components/HomeHero"), {
   loading: () => <div className="min-h-screen bg-black" />,
 });
@@ -93,7 +93,7 @@ export default function Home() {
     font: fonts[index % fonts.length]
   });
 
-  // Spotify API：遅延実行（優先度低い）
+  // Spotify API：delay fetching (low priority)
   useEffect(() => {
     async function fetchLatestRelease() {
       try {
@@ -105,7 +105,7 @@ export default function Home() {
       }
     }
   
-    // ページロード後1秒待つ（ユーザーがコンテンツを見る時間を優先）
+    // wait 1 second after page load to start fetching Spotify data, allowing critical content to load first
     const timer = setTimeout(() => {
       fetchLatestRelease();
     }, 1000);
@@ -114,7 +114,7 @@ export default function Home() {
   }, []);
   
   
-  // About セクション：Intersection Observer最適化
+  // About section：Intersection Observer optimization
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -137,7 +137,7 @@ export default function Home() {
     };
   }, []);
 
-  // Notion Blog API：遅延実行（2秒後）
+  // Notion Blog API：delay fetching (2seconds) to prioritize above-the-fold content
   useEffect(() => {
     const timer = setTimeout(async () => {
       try {
@@ -165,7 +165,7 @@ export default function Home() {
         <Blog posts={posts} setSelectedPost={setSelectedPost} />
         <Contact/>
 
-        {/* モーダル */}
+        {/* modal */}
         {selectedPost && (
           <BlogModal 
             post={selectedPost} 

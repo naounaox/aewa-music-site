@@ -33,7 +33,7 @@ const Releases = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-5xl font-bold mb-8 text-white">RELEASES</h2>
         
-        {/* 🎵 Spotifyの埋め込みプレイヤー（遅延ロード） */}
+        {/* Spotifyの埋め込みプレイヤー（遅延ロード） */}
         <div className="bg-black/50 p-6 rounded-2xl backdrop-blur-sm">
           {isVisible ? (
             <iframe 

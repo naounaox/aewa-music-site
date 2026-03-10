@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "export": "next export",
     "build": "next build --webpack",
     "start": "next start",

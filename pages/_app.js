@@ -88,8 +88,7 @@
 //   );
 // }
 
-
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import Script from "next/script";
 import Head from "next/head";
 import { useEffect } from "react";
