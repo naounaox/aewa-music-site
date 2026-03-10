@@ -4,20 +4,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
-  // useEffect(() => {
-  //   if ("serviceWorker" in navigator) {
-  //     window.addEventListener("load", () => {
-  //       navigator.serviceWorker.register("/service-worker.js").then(
-  //         (registration) => {
-  //           console.log("Service Worker registered:", registration);
-  //         },
-  //         (error) => {
-  //           console.log("Service Worker registration failed:", error);
-  //         }
-  //       );
-  //     });
-  //   }
-  // }, []);
+  
 
   return (
     <>
