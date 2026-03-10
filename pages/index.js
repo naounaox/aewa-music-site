@@ -159,19 +159,19 @@ export default function Home() {
         <meta name="description" content="still pop, still fuzzy - Welcome to aewa's official website." />
       </Head>
       <Layout>
-        <HomeHero />
+        {/* <HomeHero />
         <Releases/>
         <About/>
         <Blog posts={posts} setSelectedPost={setSelectedPost} />
         <Contact/>
 
-        {/* modal */}
+
         {selectedPost && (
           <BlogModal 
             post={selectedPost} 
             onClose={() => setSelectedPost(null)} 
           />
-        )}
+        )} */}
        </Layout>
     </>
   );
