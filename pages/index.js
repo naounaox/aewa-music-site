@@ -1,12 +1,12 @@
-// import Head from 'next/head';
-// import Layout from '../components/Layout';
-// import { useState, useEffect } from 'react';
-// import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 
-// // dynamic import：delay loading (LCP optimization)
-// const HomeHero = dynamic(() => import("@/components/HomeHero"), {
-//   loading: () => <div className="min-h-screen bg-black" />,
-// });
+// dynamic import：delay loading (LCP optimization)
+const HomeHero = dynamic(() => import("@/components/HomeHero"), {
+  loading: () => <div className="min-h-screen bg-black" />,
+});
 // const Releases = dynamic(() => import("@/components/Releases"), { 
 //   loading: () => <div className="min-h-screen bg-black" />,
 //   ssr: false
@@ -83,112 +83,96 @@
 //   );
 // };
 
-// export default function Home() {
-//   const [posts, setPosts] = useState([]);
-//   const [selectedPost, setSelectedPost] = useState(null);
-//   const [isAboutVisible, setIsAboutVisible] = useState(false);
-
-//   const getPhraseWithFont = (index) => ({
-//     text: 'still pop, still fuzzy',
-//     font: fonts[index % fonts.length]
-//   });
-
-//   // Spotify API：delay fetching (low priority)
-//   useEffect(() => {
-//     async function fetchLatestRelease() {
-//       try {
-//         const response = await fetch("/api/spotify");
-//         const data = await response.json();
-//         console.log("Fetched latest release:", data);
-//       } catch (error) {
-//         console.error("Failed to fetch latest release:", error);
-//       }
-//     }
-  
-//     // wait 1 second after page load to start fetching Spotify data, allowing critical content to load first
-//     const timer = setTimeout(() => {
-//       fetchLatestRelease();
-//     }, 1000);
-
-//     return () => clearTimeout(timer);
-//   }, []);
-  
-  
-//   // About section：Intersection Observer optimization
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting) {
-//           setIsAboutVisible(true);
-//         }
-//       },
-//       { threshold: 0.3 }
-//     );
-
-//     const aboutSection = document.getElementById('about');
-//     if (aboutSection) {
-//       observer.observe(aboutSection);
-//     }
-
-//     return () => {
-//       if (aboutSection) {
-//         observer.unobserve(aboutSection);
-//       }
-//     };
-//   }, []);
-
-//   // Notion Blog API：delay fetching (2seconds) to prioritize above-the-fold content
-//   useEffect(() => {
-//     const timer = setTimeout(async () => {
-//       try {
-//         const response = await fetch('/api/notion');
-//         const data = await response.json();
-//         setPosts(data);
-//       } catch (error) {
-//         console.error('Error fetching posts:', error);
-//       }
-//     }, 2000);
-
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   return (
-//     <>
-//       <Head>
-//         <title>aewa - Official Website</title>
-//         <meta name="description" content="still pop, still fuzzy - Welcome to aewa's official website." />
-//       </Head>
-//       <Layout>
-//         {/* <HomeHero />
-//         <Releases/>
-//         <About/>
-//         <Blog posts={posts} setSelectedPost={setSelectedPost} />
-//         <Contact/>
-
-
-//         {selectedPost && (
-//           <BlogModal 
-//             post={selectedPost} 
-//             onClose={() => setSelectedPost(null)} 
-//           />
-//         )} */}
-//        </Layout>
-//     </>
-//   );
-// }
-
-import Head from "next/head";
-import Layout from "../components/Layout";
-
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+
+  const getPhraseWithFont = (index) => ({
+    text: 'still pop, still fuzzy',
+    font: fonts[index % fonts.length]
+  });
+
+  // Spotify API：delay fetching (low priority)
+  useEffect(() => {
+    async function fetchLatestRelease() {
+      try {
+        const response = await fetch("/api/spotify");
+        const data = await response.json();
+        console.log("Fetched latest release:", data);
+      } catch (error) {
+        console.error("Failed to fetch latest release:", error);
+      }
+    }
+  
+    // wait 1 second after page load to start fetching Spotify data, allowing critical content to load first
+    const timer = setTimeout(() => {
+      fetchLatestRelease();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  
+  
+  // About section：Intersection Observer optimization
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAboutVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      observer.observe(aboutSection);
+    }
+
+    return () => {
+      if (aboutSection) {
+        observer.unobserve(aboutSection);
+      }
+    };
+  }, []);
+
+  // Notion Blog API：delay fetching (2seconds) to prioritize above-the-fold content
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch('/api/notion');
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Head>
         <title>aewa - Official Website</title>
+        <meta name="description" content="still pop, still fuzzy - Welcome to aewa's official website." />
       </Head>
       <Layout>
-        <div>test</div>
-      </Layout>
+        <HomeHero />
+        {/* <Releases/>
+        <About/>
+        <Blog posts={posts} setSelectedPost={setSelectedPost} />
+        <Contact/>
+
+
+        {selectedPost && (
+          <BlogModal 
+            post={selectedPost} 
+            onClose={() => setSelectedPost(null)} 
+          />
+        )} */}
+       </Layout>
     </>
   );
 }
