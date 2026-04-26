@@ -85,11 +85,14 @@ export default function HomeHero() {
           }}
         >
           <div className="record-spin">
-            <img 
-              src="/aewamain.png" 
+            <img
+              src="/aewamain.webp"
               alt="aewa main"
               className="w-full h-full object-contain"
               loading="eager"
+              fetchPriority="high"
+              width="800"
+              height="800"
             />
           </div>
         </div>

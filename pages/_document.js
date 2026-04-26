@@ -50,9 +50,9 @@ export default function Document() {
         <meta property="og:description" content="aewa - Japanese pop artist, singer-songwriter. Making still pop, still fuzzy music." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aewasongs.com" />
-        <meta property="og:image" content="https://aewasongs.com/aewamain.png" />
+        <meta property="og:image" content="https://aewasongs.com/aewamain.webp" />
 
-        <link rel="icon" href="/aewamain.png" className="favicon-spin" />
+        <link rel="icon" href="/aewamain.webp" className="favicon-spin" />
         
         {/* メインフォント（重要度：高）はrel="preload"で優先度UP */}
         <link 
