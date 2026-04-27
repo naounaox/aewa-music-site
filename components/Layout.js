@@ -109,7 +109,7 @@ export default function Layout({ children }) {
     <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
   <Button
     color="inherit"
-    href="#releases"
+    href="/#releases"
     sx={{
       fontFamily: 'Gorditas, cursive', // フォントをGorditasに変更
       fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // デバイス幅ごとの文字サイズ
@@ -119,7 +119,7 @@ export default function Layout({ children }) {
   </Button>
   <Button
     color="inherit"
-    href="#about"
+    href="/#about"
     sx={{
       fontFamily: 'Gorditas, cursive', // フォントをGorditasに変更
       fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // デバイス幅ごとの文字サイズ
@@ -133,7 +133,7 @@ export default function Layout({ children }) {
     {/* 中央のテキスト */}
     <Button
       variant="h4"
-      href="#home"
+      href="/#home"
       sx={{
         fontFamily: 'Gorditas, cursive',
         textAlign: 'center',
@@ -150,7 +150,7 @@ export default function Layout({ children }) {
     <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
   <Button
     color="inherit"
-    href="#blog"
+    href="/#blog"
     sx={{
       fontFamily: 'Gorditas, cursive', // フォントをGorditasに変更
       fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // デバイス幅ごとの文字サイズ
@@ -160,7 +160,7 @@ export default function Layout({ children }) {
   </Button>
   <Button
     color="inherit"
-    href="#contact"
+    href="/#contact"
     sx={{
       fontFamily: 'Gorditas, cursive', // フォントをGorditasに変更
       fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, // デバイス幅ごとの文字サイズ
