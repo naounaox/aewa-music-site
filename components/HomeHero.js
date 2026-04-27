@@ -1,32 +1,13 @@
 import Image from 'next/image';
 
 const fonts = [
-  'Jura',
-  'Roboto Condensed',
   'Ubuntu',
-  'Bokor',
-  'Bebas Neue',
   'Indie Flower',
   'Shadows Into Light',
-  'Righteous',
-  'Orbitron',
-  'Hachi Maru Pop',
-  'Amatic SC',
-  'Silkscreen',
-  'Sacramento',
-  'Reenie Beanie',
   'Nixie One',
   'Special Elite',
-  'Paytone One',
-  'Monoton',
-  'Six Caps',
-  'Nanum Pen Script',
   'Share Tech Mono',
-  'Gochi Hand',
   'Coda',
-  'Allerta Stencil',
-  'New Rocker',
-  'Jomhuria',
   'Elsie'
 ];
 
@@ -38,7 +19,6 @@ const getPhraseWithFont = (index) => ({
 export default function HomeHero() {
   return (
     <section id="home" className="min-h-screen relative overflow-hidden bg-black">
-      {/* バックグラウンドテキスト（非同期ロード）：LCP改善のため遅延表示 */}
       <div className="absolute inset-0 flex flex-col justify-start opacity-20"
            style={{
              transform: 'translateY(-20%)',

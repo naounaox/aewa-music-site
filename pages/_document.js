@@ -54,18 +54,16 @@ export default function Document() {
 
         <link rel="icon" href="/aewamain.webp" className="favicon-spin" />
         
-        {/* メインフォント（重要度：高）はrel="preload"で優先度UP */}
         <link 
           rel="preload" 
           href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" 
           as="style" 
         />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" 
-          rel="stylesheet" 
+        <link
+          href="https://fonts.googleapis.com/css2?family=Gorditas&family=Ubuntu:wght@700&family=Indie+Flower&family=Shadows+Into+Light&family=Nixie+One&family=Special+Elite&family=Share+Tech+Mono&family=Coda:wght@700&family=Elsie:wght@900&display=swap"
+          rel="stylesheet"
         />
         
-        {/* その他フォント（重要度：低）は遅延ロード */}
         <link 
           rel="preload" 
           href="https://fonts.googleapis.com/css2?family=Jura&display=swap" 
