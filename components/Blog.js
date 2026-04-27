@@ -22,7 +22,7 @@ const Blog = ({ posts = [], setSelectedPost }) => {
                   {post.properties.Name.title[0]?.plain_text || 'Untitled'}
                 </h3>
                 <p className="text-gray-300 mb-6 line-clamp-3">
-                  {post.properties.Content?.rich_text[0]?.plain_text || ''}
+                  {post.properties.Content?.rich_text?.map((text) => text.plain_text).join('') || ''}
                 </p>
                 <div className="flex justify-end">
                   <button 
