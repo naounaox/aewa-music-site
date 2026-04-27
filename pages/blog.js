@@ -23,7 +23,7 @@ const BlogModal = ({ post, onClose }) => {
           {post.properties.Name.title[0]?.plain_text}
         </h3>
         <div className="text-gray-300 whitespace-pre-wrap">
-          {post.properties.Content?.rich_text[0]?.plain_text}
+          {post.properties.Content?.rich_text?.map((text) => text.plain_text).join('')}
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@ export default function Blog() {
                   {post.properties.Name.title[0]?.plain_text || 'Untitled'}
                 </h3>
                 <p className="text-gray-300 mb-6 line-clamp-3">
-                  {post.properties.Content?.rich_text[0]?.plain_text || ''}
+                  {post.properties.Content?.rich_text?.map((text) => text.plain_text).join('') || ''}
                 </p>
                 <div className="flex justify-end">
                   <button 
