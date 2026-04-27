@@ -16,6 +16,9 @@ const getPhraseWithFont = (index) => ({
   font: fonts[index % fonts.length]
 });
 
+const rows = 18;
+const phrasesPerRow = 8;
+
 export default function HomeHero() {
   return (
     <section id="home" className="min-h-screen relative overflow-hidden bg-black">
@@ -27,30 +30,29 @@ export default function HomeHero() {
              backfaceVisibility: 'hidden',
              perspective: 1000,
            }}>
-        {Array(12).fill(null).map((_, rowIndex) => (
-          <div 
-            key={rowIndex} 
-            className="whitespace-nowrap text-2xl md:text-7xl font-bold py-4"
-            style={{
-              transform: 'translateX(-10%)',
-              width: '150%',
-              willChange: 'transform',
-              backfaceVisibility: 'hidden',
-            }}
-          >
-            {Array(8).fill(null).map((_, phraseIndex) => {
-              const phrase = getPhraseWithFont(rowIndex * 8 + phraseIndex);
-              return (
-                <span
-                  key={phraseIndex}
-                  style={{ fontFamily: phrase.font }}
-                >
-                  {phrase.text + ', '}
-                </span>
-              );
-            })}
-          </div>
-        ))}
+    {Array(rows).fill(null).map((_, rowIndex) => (
+      <div 
+        key={rowIndex} 
+        className="whitespace-nowrap text-3xl md:text-7xl font-bold py-3 md:py-4"
+        style={{
+          transform: 'translateX(-10%)',
+          width: '180%',
+          backfaceVisibility: 'hidden',
+        }}
+      >
+        {Array(phrasesPerRow).fill(null).map((_, phraseIndex) => {
+          const phrase = getPhraseWithFont(rowIndex * phrasesPerRow + phraseIndex);
+          return (
+            <span
+              key={phraseIndex}
+              style={{ fontFamily: `'${phrase.font}', cursive` }}
+            >
+              {phrase.text + ', '}
+            </span>
+          );
+        })}
+      </div>
+    ))}
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-screen">
